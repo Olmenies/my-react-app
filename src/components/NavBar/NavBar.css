@@ -1,0 +1,20 @@
+nav{
+  display: inline;
+}
+
+ul{
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+
+  background-color: tomato;
+}
+
+li{
+  padding: 1rem;
+}
+
+li:hover{
+  background-color: red;
+}
