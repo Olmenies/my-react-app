@@ -1,19 +1,23 @@
 import './ItemList.css';
 import Item from '../Item/Item';
-
-const myData =
-[
-  {id:1, title:"Pez betta", price:2000, picture:"prueba"},
-  {id:2, title:"Pez oscar", price:10000, pricture:"prueba"},
-  {id:2, title:"Pez arlequín", price:10000, pricture:"prueba"},
-  {id:2, title:"Pez neon", price:10000, pricture:"prueba"},
-  {id:2, title:"Pez goldfish", price:10000, pricture:"prueba"}
-];
+import {getFetch} from '../../helpers/getFetch';
+import {useState, useEffect} from 'react';
 
 const ItemList = () => {
+
+  const [prod, setProd] = useState([]);
+
+  useEffect(() => {
+    getFetch()
+    .then(resp => {
+      setProd(resp);
+    })
+    .catch(err => console.log(err))
+  },[]);
+
   return(
     <div style={{display:"flex", justifyContent:"space-around"}}>
-      {myData.map((element) => <Item data={element} key={element.id}/>)}
+      {prod.map((element) => <Item data={element} key={element.id}/>)}
     </div>
   );
 }
