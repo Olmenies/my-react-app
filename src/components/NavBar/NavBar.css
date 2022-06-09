@@ -19,3 +19,14 @@ li{
 li:hover{
   background-color: red;
 }
+
+@media screen and (max-width: 768px){
+  nav{
+    display: flex;
+    flex-direction: column;
+  }
+
+  li{
+    padding: 0.5rem;
+  }
+}

@@ -9,11 +9,11 @@ const ItemCount = ({stock, initial}) => {
   }
 
   const subtract = () => {
-    count > 0 && setCount(count-1);
+    count > 0 && setCount(count-1)
   }
 
   const confirmPurchase = () => {
-    alert(`Se compraron: ${count}`);
+    alert(`Se compraron: ${count} unidades`);
   }
 
   return (
@@ -28,4 +28,4 @@ const ItemCount = ({stock, initial}) => {
   );
 }
 
-export default ItemCount
+export default ItemCount;
