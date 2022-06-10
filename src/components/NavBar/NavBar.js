@@ -1,18 +1,20 @@
 import './NavBar.css';
 import Branch from '../Branch/Branch';
 import CartWidget from '../CartWidget/CartWidget';
+import {NavLink} from 'react-router-dom';
 
 const NavBar = () => {
   return (
     <nav>
     <Branch/>
       <ul>
-        <li><a href='#'>Home</a></li>
-        <li><a href='#'>About</a></li>
-        <li><a href='#'>Catalog</a></li>
-        <li><a href='#'>Contact</a></li>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/">Peces</NavLink></li>
+        <li><NavLink to="/">Accesorios</NavLink></li>
       </ul>
-      <CartWidget/>
+      <NavLink to="/">
+        <CartWidget/>
+      </NavLink>
     </nav>
   );
 }

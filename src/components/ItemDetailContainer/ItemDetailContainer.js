@@ -1,16 +1,15 @@
-import './ItemList.css';
 import Item from '../Item/Item';
 import {getFetch} from '../../helpers/getFetch';
 import {useState, useEffect} from 'react';
 
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
+import ItemDetail from '../ItemDetail/ItemDetail';
 
-const ItemList = () => {
+const ItemDetailContainer = () => {
 
-  const [prod, setProd] = useState([]);
+  const [prod, setProd] = useState({});
 
   useEffect(() => {
-    getFetch()
+    getFetch(2)
     .then(resp => {
       setProd(resp);
     })
@@ -19,10 +18,9 @@ const ItemList = () => {
 
   return(
     <div style={{display:"flex", justifyContent:"space-around"}}>
-      {prod.map((element) => <Item data={element} key={element.id}/>)}
-      <ItemDetailContainer/>
+      <ItemDetail data={prod}/>
     </div>
   );
 }
 
-export default ItemList;
+export default ItemDetailContainer;
