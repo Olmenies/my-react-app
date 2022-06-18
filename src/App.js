@@ -1,7 +1,9 @@
 import './App.css';
+import './customCss.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import CartContainer from './components/CartContainer/CartContainer';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 
 //BrowserRouter -> Envuelve todo lo que quiero que vaya a usar enrutado
@@ -16,13 +18,12 @@ function App() {
         <header>
           <NavBar/>
         </header>
-        <body>
-          <Routes>
-            <Route path="/" element={<ItemListContainer greeting='¡Bienvenidos!'/>}/>
-            <Route path="/ItemDetailContainer/:id" element={<ItemDetailContainer/>}/>
-            <Route path="*" element={<Navigate to="/"/>}/>
-          </Routes>
-        </body>
+        <Routes>
+          <Route path="/" element={<ItemListContainer/>}/>
+          <Route path="/ItemDetailContainer/:id" element={<ItemDetailContainer/>}/>
+          <Route path="/Cart" element={<CartContainer/>}/>
+          <Route path="*" element={<Navigate to="/"/>}/>
+        </Routes>
       </div>
     </BrowserRouter>
   );

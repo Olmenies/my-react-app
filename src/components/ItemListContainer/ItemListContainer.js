@@ -1,12 +1,14 @@
 import './ItemListContainer.css';
-import Item from '../Item/Item';
 import ItemList from '../ItemList/ItemList';
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
+
+  const handlerInput = (event) => {
+    console.log(event);
+  }
 
   return (
-    <div>
-      <p style={{backgroundColor:"maroon", color:"white"}}>{greeting}</p>
+    <div onMouseMove={handlerInput}>
       <ItemList/>
     </div>
   );

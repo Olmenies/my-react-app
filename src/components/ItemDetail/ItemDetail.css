@@ -1,0 +1,10 @@
+.itemDetail{
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  align-items: center;
+}
+
+.itemDetailChildDiv{
+  max-width: 33%;
+}

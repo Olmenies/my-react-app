@@ -3,8 +3,6 @@ import Item from '../Item/Item';
 import {getFetch} from '../../helpers/getFetch';
 import {useState, useEffect} from 'react';
 
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
-
 const ItemList = () => {
 
   const [prod, setProd] = useState([]);
@@ -18,9 +16,8 @@ const ItemList = () => {
   },[]);
 
   return(
-    <div style={{display:"flex", justifyContent:"space-around"}}>
+    <div className='itemList'>
       {prod.map((element) => <Item data={element} key={element.id}/>)}
-      <ItemDetailContainer/>
     </div>
   );
 }

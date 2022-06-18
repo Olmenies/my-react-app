@@ -1,7 +1,7 @@
 nav{
   display: flex;
   justify-content: space-around;
-  background-color: tomato;
+  background-color: #6B91E3;
   align-items: center;
 }
 
@@ -14,10 +14,11 @@ ul{
 
 li{
   padding: 1rem;
+  border-radius: 5px;
 }
 
 li:hover{
-  background-color: red;
+  background-color: #5370B0;
 }
 
 @media screen and (max-width: 768px){

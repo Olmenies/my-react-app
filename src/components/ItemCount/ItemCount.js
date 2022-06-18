@@ -1,8 +1,10 @@
 import {useState} from 'react';
+import {NavLink} from 'react-router-dom';
 
-const ItemCount = ({stock, initial}) => {
+const ItemCount = ({sendElementToParent, stock, initial}) => {
 
   const [count, setCount] = useState(parseInt(initial));
+  const [isReady, setIsReady] = useState(false)
 
   const add = () => {
     count < stock && setCount(count+1);
@@ -17,13 +19,16 @@ const ItemCount = ({stock, initial}) => {
   }
 
   return (
-    <div style={{border:"solid 2px black"}}>
-      <div style={{display:"flex", justifyContent:"space-around"}}>
+    <div>
+      <div style={{display:'flex', justifyContent:'space-around'}}>
         <button onClick={subtract}>-</button>
-        <p>{count}</p>
+        <p>{count}< /p>
         <button onClick={add}>+</button>
       </div>
-      <button onClick={confirmPurchase}>Agregar al carrito</button>
+      {(isReady)? <NavLink to='/Cart'><button>Ir al carrito</button></NavLink> : <button onClick={() => {
+        setIsReady(true);
+        sendElementToParent(count)
+      }}>Agregar al carrito</button>}
     </div>
   );
 }
