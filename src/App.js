@@ -14,15 +14,16 @@ function App() {
   return (
 
     <BrowserRouter>
-      <div className="App">
+      <div className='App'>
         <header>
           <NavBar/>
         </header>
         <Routes>
-          <Route path="/" element={<ItemListContainer/>}/>
-          <Route path="/ItemDetailContainer/:id" element={<ItemDetailContainer/>}/>
-          <Route path="/Cart" element={<CartContainer/>}/>
-          <Route path="*" element={<Navigate to="/"/>}/>
+          <Route path='/' element={<ItemListContainer/>}/>
+          <Route path='/ItemDetailContainer/:id' element={<ItemDetailContainer/>}/>
+          <Route path='/filter/:category' element={<ItemListContainer/>}/>
+          <Route path='/Cart' element={<CartContainer/>}/>
+          <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,11 +1,14 @@
 import './ItemList.css';
 import Item from '../Item/Item';
-import {getFetch} from '../../helpers/getFetch';
+import {getFetch, getFetchCategory} from '../../helpers/getFetch';
 import {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom'
 
 const ItemList = () => {
 
   const [prod, setProd] = useState([]);
+  const [array, setArray] = useState([]);
+  const {category} = useParams();
 
   useEffect(() => {
     getFetch()
@@ -15,9 +18,17 @@ const ItemList = () => {
     .catch(err => console.log(err))
   },[]);
 
+  useEffect(() => {
+    getFetchCategory(category)
+    .then(resp => {
+      setArray(resp);
+      console.log(resp);
+    });
+  },[category]);
+
   return(
     <div className='itemList'>
-      {prod.map((element) => <Item data={element} key={element.id}/>)}
+      {(category===undefined)? (prod.map((element) => <Item data={element} key={element.id}/>)) : (array.map(element => <Item data={element} key={element.id}/>))}
     </div>
   );
 }

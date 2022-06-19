@@ -9,8 +9,8 @@ const NavBar = () => {
     <Branch/>
       <ul>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/">Peces</NavLink></li>
-        <li><NavLink to="/">Accesorios</NavLink></li>
+        <li><NavLink to="/filter/fish">Peces</NavLink></li>
+        <li><NavLink to="/filter/accesory">Accesorios</NavLink></li>
       </ul>
       <NavLink to="/Cart"><CartWidget/></NavLink>
     </nav>

@@ -3,12 +3,8 @@ import ItemList from '../ItemList/ItemList';
 
 const ItemListContainer = () => {
 
-  const handlerInput = (event) => {
-    console.log(event);
-  }
-
   return (
-    <div onMouseMove={handlerInput}>
+    <div>
       <ItemList/>
     </div>
   );
