@@ -17,6 +17,11 @@ li{
   border-radius: 5px;
 }
 
+.NavLinkAnchor{
+  text-decoration: none;
+  color: black;
+}
+
 li:hover{
   background-color: #5370B0;
 }

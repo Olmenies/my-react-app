@@ -8,9 +8,9 @@ const NavBar = () => {
     <nav>
     <Branch/>
       <ul>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/filter/fish">Peces</NavLink></li>
-        <li><NavLink to="/filter/accesory">Accesorios</NavLink></li>
+        <li><NavLink className='NavLinkAnchor' to="/">Home</NavLink></li>
+        <li><NavLink className='NavLinkAnchor' to="/filter/fish">Peces</NavLink></li>
+        <li><NavLink className='NavLinkAnchor' to="/filter/accesory">Accesorios</NavLink></li>
       </ul>
       <NavLink to="/Cart"><CartWidget/></NavLink>
     </nav>

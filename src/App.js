@@ -1,6 +1,7 @@
 import './App.css';
 import './customCss.css';
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import CartContainer from './components/CartContainer/CartContainer';
@@ -25,6 +26,9 @@ function App() {
           <Route path='/Cart' element={<CartContainer/>}/>
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
+        <footer>
+          <Footer/>
+        </footer>
       </div>
     </BrowserRouter>
   );

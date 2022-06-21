@@ -1,0 +1,9 @@
+.footer{
+  background-color: #6B91E3;
+  display: flex;
+  justify-content: center;
+}
+
+.footerContent{
+  width: 33%;
+}
