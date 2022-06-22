@@ -7,30 +7,33 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import CartContainer from './components/CartContainer/CartContainer';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 
+import {CartContextProvider} from './contexts/cartContext';
+
 //BrowserRouter -> Envuelve todo lo que quiero que vaya a usar enrutado
 //Routes -> Envuelve todos los componentes que quiero que tengan su propia ruta (vista)
 //Route -> Vincula la ruta con el componente
 
 function App() {
   return (
-
-    <BrowserRouter>
-      <div className='App'>
-        <header>
-          <NavBar/>
-        </header>
-        <Routes>
-          <Route path='/' element={<ItemListContainer/>}/>
-          <Route path='/ItemDetailContainer/:id' element={<ItemDetailContainer/>}/>
-          <Route path='/filter/:category' element={<ItemListContainer/>}/>
-          <Route path='/Cart' element={<CartContainer/>}/>
-          <Route path='*' element={<Navigate to='/'/>}/>
-        </Routes>
-        <footer>
-          <Footer/>
-        </footer>
-      </div>
-    </BrowserRouter>
+    <CartContextProvider>
+      <BrowserRouter>
+        <div className='App'>
+          <header>
+            <NavBar/>
+          </header>
+          <Routes>
+            <Route path='/' element={<ItemListContainer/>}/>
+            <Route path='/ItemDetailContainer/:id' element={<ItemDetailContainer/>}/>
+            <Route path='/filter/:category' element={<ItemListContainer/>}/>
+            <Route path='/Cart' element={<CartContainer/>}/>
+            <Route path='*' element={<Navigate to='/'/>}/>
+          </Routes>
+          <footer>
+            <Footer/>
+          </footer>
+        </div>
+      </BrowserRouter>
+    </CartContextProvider>
   );
 }
 

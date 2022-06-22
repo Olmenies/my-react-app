@@ -13,11 +13,7 @@ const ItemCount = ({sendElementToParent, stock, initial}) => {
   }
 
   const subtract = () => {
-    count > 0 && setCount(count-1)
-  }
-
-  const confirmPurchase = () => {
-    alert(`Se compraron: ${count} unidades`);
+    count > 1 && setCount(count-1)
   }
 
   return (

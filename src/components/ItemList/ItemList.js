@@ -22,7 +22,6 @@ const ItemList = () => {
     getFetchCategory(category)
     .then(resp => {
       setArray(resp);
-      console.log(resp);
     });
   },[category]);
 
