@@ -12,6 +12,7 @@ export const useCartContext = () => useContext(CartContext);
 export const CartContextProvider = ({children}) => { //todo lo que "encierro entre dos tags, pasa como prop children por defecto" (todo lo que envolví en App.js
 
   const [cart, setCart] = useState([]);
+
   const addToCart = (item) => {
 
     const tempCart = [...cart];
@@ -19,7 +20,6 @@ export const CartContextProvider = ({children}) => { //todo lo que "encierro ent
     cart.length === 0 && setCart([...cart, item]);
 
     tempCart.map(el => {
-
       if(el.id === item.id){
         el.cantidad += item.cantidad;
       }
@@ -34,9 +34,13 @@ export const CartContextProvider = ({children}) => { //todo lo que "encierro ent
     //setCart([...tempCart, item]) //copiamos todo lo que tiene cart, sumando item -> Sería como hacer un push
   }
 
+  const deleteFromCart = (item) => {
+    setCart([...cart.filter(el => el.id != item)]);
+  }
+
   return(
     <CartContext.Provider
-    value={{cart, addToCart}}
+    value={{cart, addToCart, deleteFromCart}}
     >
     {children}
     </CartContext.Provider>

@@ -3,12 +3,7 @@ import './Cart.css';
 
 const Cart = () => {
 
-  const {cart} = useCartContext();
-
-  const test = () => {
-    console.log("cumbia");
-  }
-
+  const {cart, addToCart, deleteFromCart} = useCartContext();
   return(
     <div className='cartDiv'>
       {cart.map(item => {
@@ -18,7 +13,9 @@ const Cart = () => {
             <p>${item.price}</p>
             <p>{item.cantidad} unidad(es)</p>
             <img src={item.picture} alt="Item picture" className='cartImg'/>
-            <button onClick={test} >Eliminar</button>
+            <button onClick={() => {
+              deleteFromCart(item.id)
+            }}>Eliminar</button>
           </li>
         );
       })}
