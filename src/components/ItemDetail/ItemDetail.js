@@ -14,8 +14,6 @@ const ItemDetail = ({data}) => {
     addToCart({...data, cantidad:cant}); //spread para generar desestructurar los campos de data
   }
 
-  console.log(cart);
-
   return(
     <div>
         <div>
