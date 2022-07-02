@@ -1,35 +1,32 @@
 import './ItemList.css';
 import Item from '../Item/Item';
-import {getFetch, getFetchCategory} from '../../helpers/getFetch';
 import {useState, useEffect, memo} from 'react';
 import {useParams} from 'react-router-dom'
+import {getFirestore, collection, getDocs} from 'firebase/firestore';
 
 //We use memo() to memorize the list and optimize the app preventing it to re-render each time a state is changed (if the change does not affect ItemList)
 const ItemList = memo(
   () => {
 
     const [prod, setProd] = useState([]);
-    const [array, setArray] = useState([]);
+    const [myFilteredArray, setMyFilteredArray] = useState([]);
     const {category} = useParams();
 
+    //TODO: Change below to a async/await
     useEffect(() => {
-      getFetch()
-      .then(resp => {
-        setProd(resp);
-      })
-      .catch(err => console.log(err))
+      const db = getFirestore();
+      const queryCollection = collection(db, 'products');
+      getDocs(queryCollection)
+      .then(resp => setProd(resp.docs.map(item => ({ id:item.id, ...item.data()}))));
     },[]);
 
     useEffect(() => {
-      getFetchCategory(category)
-      .then(resp => {
-        setArray(resp);
-      });
+      setMyFilteredArray(prod.filter(el => el.category === category));
     },[category]);
 
     return(
       <div className='itemList'>
-        {(category===undefined)? (prod.map((element) => <Item data={element} key={element.id}/>)) : (array.map(element => <Item data={element} key={element.id}/>))}
+        {(category===undefined)? (prod.map((element) => <Item data={element} key={element.id}/>)) : (myFilteredArray.map(element => <Item data={element} key={element.id}/>))}
       </div>
     );
   }

@@ -1,7 +1,7 @@
-import {getFetch} from '../../helpers/getFetch';
 import {useState, useEffect} from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import {useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom';
+import {getFirestore, doc, getDoc} from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
 
@@ -10,11 +10,10 @@ const ItemDetailContainer = () => {
   const{id} = useParams();
 
   useEffect(() => {
-    getFetch(id)
-    .then(resp => {
-      setProd(resp);
-    })
-    .catch(err => console.log(err))
+    const db = getFirestore();
+    const queryItem = doc(db, 'products', id);
+    getDoc(queryItem)
+    .then(resp => setProd({id:resp.id, ...resp.data()}));
   },[]);
 
   return(

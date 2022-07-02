@@ -1,13 +1,11 @@
 import {useCartContext} from '../../contexts/cartContext';
-
 import ItemCount from '../ItemCount/ItemCount';
-
 import './ItemDetail.css';
 
 const ItemDetail = ({data}) => {
   const {title, description, stock, price, picture} = data;
 
-  const {cart, addToCart} = useCartContext();
+  const {addToCart} = useCartContext();
 
 
   const sendElementToParent = (cant) => {

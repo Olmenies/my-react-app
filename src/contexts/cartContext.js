@@ -35,7 +35,7 @@ export const CartContextProvider = ({children}) => { //todo lo que "encierro ent
   }
 
   const deleteFromCart = (item) => {
-    setCart([...cart.filter(el => el.id != item)]);
+    setCart([...cart.filter(el => el.id !== item)]);
   }
 
   return(
