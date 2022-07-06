@@ -22,7 +22,7 @@ const ItemList = memo(
 
     useEffect(() => {
       setMyFilteredArray(prod.filter(el => el.category === category));
-    },[category]);
+    },[category, prod]);
 
     return(
       <div className='itemList'>

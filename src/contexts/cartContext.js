@@ -14,7 +14,6 @@ export const CartContextProvider = ({children}) => { //todo lo que "encierro ent
   const [cart, setCart] = useState([]);
 
   const addToCart = (item) => {
-
     const tempCart = [...cart];
 
     cart.length === 0 && setCart([...cart, item]);
@@ -30,17 +29,25 @@ export const CartContextProvider = ({children}) => { //todo lo que "encierro ent
         setCart([...tempCart, item]);
       }
     });
-
-    //setCart([...tempCart, item]) //copiamos todo lo que tiene cart, sumando item -> Sería como hacer un push
   }
 
   const deleteFromCart = (item) => {
     setCart([...cart.filter(el => el.id !== item)]);
   }
 
+  const getFullPrice = () => {
+
+    let fullPrice = 0;
+
+    cart.forEach(item => {
+      fullPrice += parseInt(item.price) * parseInt(item.cantidad);
+    });
+    return fullPrice;
+  }
+
   return(
     <CartContext.Provider
-    value={{cart, addToCart, deleteFromCart}}
+      value={{cart, addToCart, deleteFromCart, getFullPrice}}
     >
     {children}
     </CartContext.Provider>

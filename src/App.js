@@ -6,7 +6,6 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import CartContainer from './components/CartContainer/CartContainer';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-
 import {CartContextProvider} from './contexts/cartContext';
 
 //BrowserRouter -> Envuelve todo lo que quiero que vaya a usar enrutado

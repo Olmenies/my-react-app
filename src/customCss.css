@@ -5,3 +5,9 @@ body{
 button{
   cursor: pointer;
 }
+
+@media screen and (max-width: 319px){
+  body{
+    display: none;
+  }
+}

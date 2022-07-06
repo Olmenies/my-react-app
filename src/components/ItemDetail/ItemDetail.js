@@ -19,7 +19,7 @@ const ItemDetail = ({data}) => {
         </div>
       <div className='itemDetail'>
         <div className='itemDetailChildDiv'>
-          <img src={picture} alt='Imagen de prueba'/>
+          <img className='itemDetailImage' src={picture} alt='Imagen de prueba'/>
         </div>
         <div className='itemDetailChildDiv'>
           <p>{description}</p>

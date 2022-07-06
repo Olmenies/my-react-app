@@ -8,3 +8,9 @@
 .itemDetailChildDiv{
   max-width: 33%;
 }
+
+.itemDetailImage{
+  width: 90%;
+  border: solid 2px black;
+  border-radius: 5px;
+}

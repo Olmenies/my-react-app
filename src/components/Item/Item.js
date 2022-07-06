@@ -9,7 +9,7 @@ const Item = ({data}) => {
       <img className='itemImage' src={picture} alt={`Foto de ${title}`}/>
       <div>
         <h3>{title}</h3>
-        <p>{description}</p>
+        <p className='itemP'>{description}</p>
       </div>
       <div>
         <p>${price}</p>
