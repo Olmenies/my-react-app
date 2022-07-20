@@ -1,18 +1,17 @@
 import {useState, createContext, useContext} from 'react';
 
-//Provider
-//export const CartContext = createContext([]);
-
-//exportar la función con el useContext incluído permite ahorrar su importación en el resto de archivos
+//Instantiate a context
 const CartContext = createContext([]);
 
+//Export our custom context
 export const useCartContext = () => useContext(CartContext);
 
 //Custom provider
-export const CartContextProvider = ({children}) => { //todo lo que "encierro entre dos tags, pasa como prop children por defecto" (todo lo que envolví en App.js
+export const CartContextProvider = ({children}) => {
 
   const [cart, setCart] = useState([]);
 
+  //Function to add an item to our cart
   const addToCart = (item) => {
     const tempCart = [...cart];
 
@@ -31,10 +30,12 @@ export const CartContextProvider = ({children}) => { //todo lo que "encierro ent
     });
   }
 
+  //Function to delete an item from our cart
   const deleteFromCart = (item) => {
     setCart([...cart.filter(el => el.id !== item)]);
   }
 
+  //Function to get the full price of the whole price
   const getFullPrice = () => {
 
     let fullPrice = 0;
@@ -42,9 +43,11 @@ export const CartContextProvider = ({children}) => { //todo lo que "encierro ent
     cart.forEach(item => {
       fullPrice += parseInt(item.price) * parseInt(item.cantidad);
     });
+
     return fullPrice;
   }
 
+  //Function to delete all items of our cart
   const emptyCart = () => {
     setCart([]);
   }

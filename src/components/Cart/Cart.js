@@ -1,4 +1,4 @@
-import {useCartContext} from '../../contexts/cartContext';
+import {useCartContext, emptyCart} from '../../contexts/cartContext';
 import {useState, useEffect} from 'react';
 import {addDoc, collection, doc, getFirestore, updateDoc} from 'firebase/firestore';
 import './Cart.css';
@@ -8,14 +8,16 @@ const Cart = () => {
   const {cart, deleteFromCart, getFullPrice, emptyCart} = useCartContext();
   const [fullPrice, setFullPrice] = useState(0);
 
+  //Hook to refresh the whole cart price each time it's updated
   useEffect(() => {
     setFullPrice(getFullPrice());
   },[getFullPrice]);
 
+  //Function to generate a new order based on what we have on the Cart
   function generateOrder(e) {
     let order = {};
 
-    order.buyer = {name: 'coco', email:'cumbiancha.volante@mymail.com', phone:'123456789'};
+    order.buyer = {name: 'Janis Joplin', email:'janis.joplin@rockmail.com', phone:'123456789'};
     order. total = fullPrice;
 
     order.items = cart.map(cartItem => {
@@ -26,21 +28,13 @@ const Cart = () => {
       return (id, title, price);
     });
 
-    console.log(order);
-
     const db = getFirestore();
 
-    //Agregamos un elemento
+    //Function to add an order to the 'orders' Firebase collection
     const orderCollection = collection(db, 'orders');
-    addDoc(orderCollection, order) //si no existe la collection, la crea
-    .then(resp => console.log(resp));
-
-    //Modificamos un elemento
-    const updateCollection = doc(db, 'products', 'HEVngeeLRP2nC1RHkGMM');
-    updateDoc(updateCollection, {
-      stock:20
-    })
-    .then(resp => console.log('Actualizado'));
+    addDoc(orderCollection, order)
+    .then(resp => window.alert(`Su orden de compra para seguimiento es: ${resp.id}`))
+    .then(emptyCart);
   }
 
   return(

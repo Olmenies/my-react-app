@@ -8,12 +8,9 @@ const CartContainer = () => {
   const {cart} = useCartContext();
   const [isEmptyCart, setIsEmptyCart] = useState(true);
 
+  //Hook to define if we have to render the cart content or not based in the cart's content
   useEffect(() => {
-    if(cart.length === 0) {
-      setIsEmptyCart(true);
-    } else {
-      setIsEmptyCart(false);
-    }
+    cart.length === 0? setIsEmptyCart(true) : setIsEmptyCart(false);
   },[cart.length]);
 
   return(

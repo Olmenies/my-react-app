@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom';
 const Item = ({data}) => {
 
   const {id, title, description, price, picture} = data;
+  
   return(
     <div className='item'>
       <img className='itemImage' src={picture} alt={`Foto de ${title}`}/>

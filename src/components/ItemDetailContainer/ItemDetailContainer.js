@@ -9,6 +9,7 @@ const ItemDetailContainer = () => {
 
   const{id} = useParams();
 
+  //Hook to get the product data from firebase
   useEffect(() => {
     const db = getFirestore();
     const queryItem = doc(db, 'products', id);

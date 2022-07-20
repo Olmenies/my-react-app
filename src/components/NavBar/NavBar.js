@@ -1,3 +1,8 @@
+/*
+  TODO:
+  . Unhardcode the li/filter from a map of the cart
+*/
+
 import './NavBar.css';
 import Branch from '../Branch/Branch';
 import CartWidget from '../CartWidget/CartWidget';

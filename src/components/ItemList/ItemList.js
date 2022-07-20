@@ -4,7 +4,6 @@ import {useState, useEffect, memo} from 'react';
 import {useParams} from 'react-router-dom'
 import {getFirestore, collection, getDocs} from 'firebase/firestore';
 
-//We use memo() to memorize the list and optimize the app preventing it to re-render each time a state is changed (if the change does not affect ItemList)
 const ItemList = memo(
   () => {
 
@@ -12,7 +11,7 @@ const ItemList = memo(
     const [myFilteredArray, setMyFilteredArray] = useState([]);
     const {category} = useParams();
 
-    //TODO: Change below to a async/await
+    //Hook to get an array of the products from Firebase
     useEffect(() => {
       const db = getFirestore();
       const queryCollection = collection(db, 'products');
@@ -20,6 +19,7 @@ const ItemList = memo(
       .then(resp => setProd(resp.docs.map(item => ({ id:item.id, ...item.data()}))));
     },[]);
 
+    //Hook to filter the products according their categories
     useEffect(() => {
       setMyFilteredArray(prod.filter(el => el.category === category));
     },[category, prod]);

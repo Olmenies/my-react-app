@@ -7,9 +7,9 @@ const ItemDetail = ({data}) => {
 
   const {addToCart} = useCartContext();
 
-
-  const sendElementToParent = (cant) => {
-    addToCart({...data, cantidad:cant}); //spread para generar desestructurar los campos de data
+  //Function to get the quantity of items from a child element
+  const sendElementToParent = (quant) => {
+    addToCart({...data, cantidad:quant});
   }
 
   return(
