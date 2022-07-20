@@ -14,3 +14,13 @@
   border: solid 2px black;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 767px){
+  .itemDetail{
+    flex-direction: column;
+  }
+
+  .itemDetailChildDiv{
+    max-width: 100%;
+  }
+}

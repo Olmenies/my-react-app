@@ -45,9 +45,13 @@ export const CartContextProvider = ({children}) => { //todo lo que "encierro ent
     return fullPrice;
   }
 
+  const emptyCart = () => {
+    setCart([]);
+  }
+
   return(
     <CartContext.Provider
-      value={{cart, addToCart, deleteFromCart, getFullPrice}}
+      value={{cart, addToCart, deleteFromCart, getFullPrice, emptyCart}}
     >
     {children}
     </CartContext.Provider>
